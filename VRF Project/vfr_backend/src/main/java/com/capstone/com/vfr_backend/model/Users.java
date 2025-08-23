@@ -53,9 +53,10 @@ public class Users {
     @Column(nullable=false, updatable=false)
     private LocalDateTime createdAt;
     
-    @OneToMany(mappedBy = "users")
+    // One User can have Many Feedback
+    @OneToMany(mappedBy = "users") //inverse side
     private List<Feedback> feedback;
-    //need to add validation using stater validation
+    
 
     
 }

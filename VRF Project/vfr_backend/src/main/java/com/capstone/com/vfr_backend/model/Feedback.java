@@ -44,12 +44,14 @@ public class Feedback {
     @Column(updatable = false)
     private LocalDateTime FeedbackTime;
 
+    // Many Feedback can have one Users
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)// owning side
     private Users users;
 
+    // Many Feedback can have one VASPack
     @ManyToOne
-    @JoinColumn(name = "vas_pack_id", nullable=false)
+    @JoinColumn(name = "vas_pack_id", nullable=false)// owning side
     private VASPack vasPack;
     
 }
