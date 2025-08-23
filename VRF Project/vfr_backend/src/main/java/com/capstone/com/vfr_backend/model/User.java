@@ -1,4 +1,4 @@
-package com.capstone.com.model;
+package com.capstone.com.vfr_backend.model;
 
 import jakarta.persistence.*;
 
