@@ -11,6 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,9 +30,13 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long feedbackId;
     
+    @NotNull(message = "Rating is required")
+    @Min(value = 1, message = "Rating must be at least 1")
+    @Max(value = 5, message = "Rating must be at most 5")
     @Column(columnDefinition = "TINYINT(1)")
     private Integer rating;
 
+    @Size(max = 1000, message = "Comment must not exceed 1000 characters")
     @Column(columnDefinition = "TEXT")
     private String comment;
 
@@ -37,7 +45,11 @@ public class Feedback {
     private LocalDateTime FeedbackTime;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-    private String username;
+    @JoinColumn(name = "user_id", nullable = false)
+    private Users users;
+
+    @ManyToOne
+    @JoinColumn(name = "vas_pack_id", nullable=false)
+    private VASPack vasPack;
+    
 }
