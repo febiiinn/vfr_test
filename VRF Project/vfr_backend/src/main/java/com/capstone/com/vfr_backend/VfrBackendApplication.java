@@ -8,6 +8,7 @@ public class VfrBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VfrBackendApplication.class, args);
+		System.out.print("Connected");
 	}
 
 }

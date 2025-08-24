@@ -1,20 +1,25 @@
-package com.capstone.com.model;
+package com.capstone.com.vfr_backend.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    private String password;
-    private String role; // e.g., "USER" or "ADMIN"
-    private LocalDateTime createdAt;
-    
 
-    // getters and setters
-}
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private String role; // "USER" or "ADMIN"
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -48,9 +53,11 @@ public class User {
         this.role = role;
     }
 
-    
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-
-
-
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
