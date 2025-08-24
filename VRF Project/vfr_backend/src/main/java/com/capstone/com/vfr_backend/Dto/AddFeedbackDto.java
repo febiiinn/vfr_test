@@ -13,8 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FeedbackDto {
-    private Long feedbackId;
+public class AddFeedbackDto {
     private Integer rating;
     private String comment;
     private LocalDateTime feedbackTime;

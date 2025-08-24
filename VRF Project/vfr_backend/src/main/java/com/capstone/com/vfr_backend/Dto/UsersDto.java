@@ -1,7 +1,6 @@
 package com.capstone.com.vfr_backend.Dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import com.capstone.com.vfr_backend.model.UType.UserType;
 
@@ -20,7 +19,7 @@ public class UsersDto {
     private LocalDateTime createdAt;
 
     // If you want feedback details also (optional, usually avoid recursion)
-    private List<Long> feedbackIds;
+    //private List<Long> feedbackIds;
 
     
 }
