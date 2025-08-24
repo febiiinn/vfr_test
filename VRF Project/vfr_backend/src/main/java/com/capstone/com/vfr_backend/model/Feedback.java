@@ -41,7 +41,7 @@ public class Feedback {
     private String comment;
 
     @CreationTimestamp
-    @Column(updatable = false)
+    @Column(name = "feedback_time", nullable = false, updatable = false)
     private LocalDateTime FeedbackTime;
 
     // Many Feedback can have one Users
