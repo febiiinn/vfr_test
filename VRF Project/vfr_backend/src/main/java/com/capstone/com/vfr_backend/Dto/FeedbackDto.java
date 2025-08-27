@@ -20,6 +20,6 @@ public class FeedbackDto {
     private LocalDateTime feedbackTime;
 
     // Instead of embedding full User and VASPack (to avoid recursion)
-    private Long userId;
+    private UsersDto users;
     private Long vasPackId;
 }

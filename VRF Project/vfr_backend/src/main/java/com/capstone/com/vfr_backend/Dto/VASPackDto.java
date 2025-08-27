@@ -1,6 +1,5 @@
 package com.capstone.com.vfr_backend.Dto;
 
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,7 @@ public class VASPackDto {
     private String description;
 
     // Option 1: Only feedback IDs (lightweight, safe for most APIs)
-    private List<Long> feedbackIds;
+    //private List<Long> feedbackIds;
 
     // --- OR ---
     // Option 2: If you want feedback details:

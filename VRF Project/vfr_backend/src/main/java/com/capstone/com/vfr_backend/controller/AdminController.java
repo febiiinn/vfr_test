@@ -11,48 +11,51 @@ import org.springframework.web.bind.annotation.RestController;
 import com.capstone.com.vfr_backend.Dto.FeedbackDto;
 import com.capstone.com.vfr_backend.service.AdminService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/admin")
+@RequiredArgsConstructor
 public class AdminController {
 
     private final AdminService adminService;
 
     // --- Feedback Management ---
     @GetMapping("/feedback")
-    public ResponseEntity<List<FeedbackDto>> getAllFeedback(@PathVariable Long vasPackId) {
-        return ResponseEntity.ok(adminService.getAllFeedback(vasPackId));
+    public ResponseEntity<List<FeedbackDto>> getAllFeedback() {
+        return ResponseEntity.ok(adminService.getAllFeedback());
     }
 
     @GetMapping("/vaspacks/{id}/feedback")
-    public ResponseEntity<List<FeedbackDto>> getFeedbackForPack(@PathVariable Long id) {
-        // all feedback for a specific pack
+    public ResponseEntity<List<FeedbackDto>> getFeedbackForPack(@PathVariable(name="id") Long PackId) {
+        return ResponseEntity.ok(adminService.getFeedbackForPack(PackId));
     }
 
-    // --- Analytics APIs ---
-    @GetMapping("/analytics/ratings/average")
-    public ResponseEntity<Double> getOverallAverageRating() {
-        // calculate and return overall avg
-    }
+    // // --- Analytics APIs ---
+    // @GetMapping("/analytics/ratings/average")
+    // public ResponseEntity<Double> getOverallAverageRating() {
+    //     // calculate and return overall avg
+    // }
 
-    @GetMapping("/analytics/ratings/vaspacks/{id}")
-    public ResponseEntity<Double> getAverageRatingForPack(@PathVariable Long id) {
-        // calculate avg rating for one pack
-    }
+    // @GetMapping("/analytics/ratings/vaspacks/{id}")
+    // public ResponseEntity<Double> getAverageRatingForPack(@PathVariable Long id) {
+    //     // calculate avg rating for one pack
+    // }
 
-    @GetMapping("/analytics/vaspacks/top-rated")
-    public ResponseEntity<List<VASPackDto>> getTopRatedPacks() {
-        // return packs sorted by avg rating
-    }
+    // @GetMapping("/analytics/vaspacks/top-rated")
+    // public ResponseEntity<List<VASPackDto>> getTopRatedPacks() {
+    //     // return packs sorted by avg rating
+    // }
 
-    // --- Future (Word Cloud & Sentiment Analysis) ---
-    @GetMapping("/analytics/feedback/wordcloud")
-    public ResponseEntity<Map<String, Integer>> getWordCloud() {
-        // generate frequency map of words
-    }
+    // // --- Future (Word Cloud & Sentiment Analysis) ---
+    // @GetMapping("/analytics/feedback/wordcloud")
+    // public ResponseEntity<Map<String, Integer>> getWordCloud() {
+    //     // generate frequency map of words
+    // }
 
-    @GetMapping("/analytics/feedback/sentiment")
-    public ResponseEntity<Map<String, Double>> getSentimentAnalysis() {
-        // return sentiment score distribution
-    }
+    // @GetMapping("/analytics/feedback/sentiment")
+    // public ResponseEntity<Map<String, Double>> getSentimentAnalysis() {
+    //     // return sentiment score distribution
+    // }
 }
 

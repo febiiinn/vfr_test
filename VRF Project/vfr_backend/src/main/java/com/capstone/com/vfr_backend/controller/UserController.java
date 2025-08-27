@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 
 public class UserController {
@@ -49,9 +49,9 @@ public class UserController {
     }
 
     // not getting useId in postman
-    @GetMapping("/feedback")
-    public ResponseEntity<List<FeedbackDto>> getUserFeedback() {
-        return ResponseEntity.ok(userService.getUserFeedback());
+    @GetMapping("/{userId}/feedback")
+    public ResponseEntity<List<FeedbackDto>> getUserFeedback(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUserFeedback(userId));
     }
 
     @DeleteMapping("/feedback/{id}")

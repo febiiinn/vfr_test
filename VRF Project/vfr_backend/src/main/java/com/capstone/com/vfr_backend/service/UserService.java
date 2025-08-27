@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.capstone.com.vfr_backend.Dto.AddFeedbackDto;
 import com.capstone.com.vfr_backend.Dto.FeedbackDto;
-import com.capstone.com.vfr_backend.Dto.UsersDto;
 import com.capstone.com.vfr_backend.Dto.VASPackDto;
 import com.capstone.com.vfr_backend.model.Feedback;
 import com.capstone.com.vfr_backend.model.Users;
@@ -27,12 +26,12 @@ public class UserService {
     private final FeedbackRepository feedbackRepository;
     private final ModelMapper modelMapper;
 
-    public List<UsersDto> getAllUsers() {
-        List<Users> userList = usersRepository.findAll();
-        return userList.stream()
-                .map(u -> modelMapper.map(u, UsersDto.class))
-                .toList();
-    }
+    // public List<UsersDto> getAllUsers() {
+    //     List<Users> userList = usersRepository.findAll();
+    //     return userList.stream()
+    //             .map(u -> modelMapper.map(u, UsersDto.class))
+    //             .toList();
+    // }
 
     public List<VASPackDto> getAllVasPacks() {
         List<VASPack> packList = vasPackRepository.findAll();
@@ -71,8 +70,8 @@ public class UserService {
         return "Feedback submitted successfully for VAS Pack: " + vasPack.getPackTitle();
     }
 
-    public List<FeedbackDto> getUserFeedback() {
-        List<Feedback> feedbackList = feedbackRepository.findAll();
+    public List<FeedbackDto> getUserFeedback(Long userId) {
+        List<Feedback> feedbackList = feedbackRepository.findByUsers_UserId(userId);
         return feedbackList.stream().map(f -> modelMapper.map(f, FeedbackDto.class)).toList();
     }
 

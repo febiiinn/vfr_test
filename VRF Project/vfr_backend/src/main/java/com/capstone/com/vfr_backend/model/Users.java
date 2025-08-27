@@ -36,7 +36,7 @@ import lombok.Setter;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long UserId;
+    private Long userId;
 
     @NotBlank(message = "Name cannot be empty")
     @Column(nullable=false, length=100)
