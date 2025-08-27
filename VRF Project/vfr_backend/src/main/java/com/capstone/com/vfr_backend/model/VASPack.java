@@ -1,5 +1,6 @@
 package com.capstone.com.vfr_backend.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -33,6 +34,6 @@ public class VASPack {
     private String description;
     
     // One VASPack can have many Feedback
-    @OneToMany(mappedBy="vasPack") // inverse side
-    private List<Feedback> feedbacks;
+    @OneToMany(mappedBy="vasPack", orphanRemoval = true) // inverse side
+    private List<Feedback> feedbacks = new ArrayList<>();
 }

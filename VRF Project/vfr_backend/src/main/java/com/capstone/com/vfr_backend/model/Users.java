@@ -1,6 +1,7 @@
 package com.capstone.com.vfr_backend.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,12 +22,17 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +61,7 @@ public class Users {
     
     // One User can have Many Feedback
     @OneToMany(mappedBy = "users") //inverse side
-    private List<Feedback> feedback;
+    private List<Feedback> feedback =new ArrayList<>();
     
 
     
