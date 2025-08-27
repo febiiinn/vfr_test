@@ -26,12 +26,7 @@ public class UserService {
     private final FeedbackRepository feedbackRepository;
     private final ModelMapper modelMapper;
 
-    // public List<UsersDto> getAllUsers() {
-    //     List<Users> userList = usersRepository.findAll();
-    //     return userList.stream()
-    //             .map(u -> modelMapper.map(u, UsersDto.class))
-    //             .toList();
-    // }
+    
 
     public List<VASPackDto> getAllVasPacks() {
         List<VASPack> packList = vasPackRepository.findAll();
