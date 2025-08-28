@@ -31,8 +31,25 @@ public class AuthController {
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         User user = authService.authenticate(request);
-        String message = "USER".equalsIgnoreCase(user.getRole()) ? "User logged in" : "Admin logged in";
-        return new AuthResponse(user.getUsername(), user.getRole(), message);
+        if (!"USER".equalsIgnoreCase(user.getRole())) {
+            throw new RuntimeException("ONLY USERS CAN LOGIN HERE.");
+        }
+        return new AuthResponse(user.getUsername(), user.getRole(), "User logged in");
+    }
+
+    @PostMapping("/admin-login")
+    public AuthResponse adminLogin(@RequestBody AuthRequest request) {
+        User user = authService.authenticate(request);
+        if (!"ADMIN".equalsIgnoreCase(user.getRole())) {
+            throw new RuntimeException("ACCESS DENIED: Not an ADMIN");
+        }
+        return new AuthResponse(user.getUsername(), user.getRole(), "Admin logged in");
+    }
+
+    @PostMapping("/send-otp")
+    public String sendOtp(@RequestBody OtpVerificationRequest request) throws Exception {
+        authService.sendOtp(request.getPhoneNumber());
+        return "OTP sent successfully.";
     }
 
     @PostMapping("/verify-otp")

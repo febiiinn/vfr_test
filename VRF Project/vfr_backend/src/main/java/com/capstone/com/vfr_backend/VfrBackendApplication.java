@@ -9,9 +9,9 @@ public class VfrBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VfrBackendApplication.class, args);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        System.out.println(encoder.encode("password2"));
-        System.out.print("Connected");
+        // BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        // System.out.println(encoder.encode("password001"));
+        System.out.print("BUILD SUCCESSFUL");
     }
 
 }

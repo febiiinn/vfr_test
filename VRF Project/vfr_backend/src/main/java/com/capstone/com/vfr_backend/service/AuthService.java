@@ -45,11 +45,12 @@ public class AuthService {
 
         User savedUser = userRepository.save(user);
 
-        // Send OTP via Message Central
-        messageCentralService.sendOtp(user.getPhoneNumber());
-        System.out.println("OTP send request completed.");
-
         return savedUser;
+    }
+
+     public void sendOtp(String phoneNumber) throws Exception {
+        messageCentralService.sendOtp(phoneNumber);
+        System.out.println("OTP send request completed.");
     }
 
     public User authenticate(AuthRequest request) {
