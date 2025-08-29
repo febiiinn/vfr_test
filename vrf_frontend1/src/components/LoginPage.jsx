@@ -91,8 +91,15 @@ function LoginPage() {
         </button>
 
         <p style={styles.register}>
-          Don’t have an account? <a href="/">Register Now</a>
+          Don’t have an account?{" "}
+          <span 
+            style={{ color: "blue", cursor: "pointer" }} 
+            onClick={() => navigate("/register")}
+          >
+            Register Now
+          </span>
         </p>
+
       </div>
     </div>
   );
